@@ -40,12 +40,12 @@ foreach (var line in lines)
             // Chase the head
             if (tailIndex == 0)
             {
-                CalculateNextTail(tailIndex, hPosition, ref tPositions[tailIndex]);
+                CalculateNextTail(hPosition, ref tPositions[tailIndex]);
             }
             // Or; chase the previous tail
             else
             {
-                CalculateNextTail(tailIndex, tPositions[tailIndex - 1], ref tPositions[tailIndex]);
+                CalculateNextTail(tPositions[tailIndex - 1], ref tPositions[tailIndex]);
             }
 
             Console.WriteLine("Tail{0}: {1}", tailIndex + 1, tPositions[tailIndex]);
@@ -69,7 +69,7 @@ Console.WriteLine("Visited Locations: {0}", visitedLocations.Count);
     return (parts[0][0], int.Parse(parts[1]));
 }
 
-void CalculateNextTail(int index, Point topPosition, ref Point tailPosition)
+void CalculateNextTail(Point topPosition, ref Point tailPosition)
 {
     // Calculate the distance between the Head and the Tail
     var xDistance = topPosition.X - tailPosition.X;
